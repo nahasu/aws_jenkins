@@ -1,4 +1,4 @@
-docker.withRegistry('https://621917999036.dkr.ecr.ap-northeast-2.amazonaws.com', 'ecr:ap-northeast-2:AWS-Jenkins') {
+docker.withRegistry('https://621917999036.dkr.ecr.ap-northeast-2.amazonaws.com', 'AWS-Jenkins') {
     node {
         stage('Clone repository') {
             checkout scm
