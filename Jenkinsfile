@@ -21,7 +21,7 @@ pipeline {
                    // sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
 
                     // configure registry
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", "ecr:ap-northeast-2:${AWS_CREDENTIAL_NAME}") {
+                    docker.withRegistry('https://${DOCKER_REGISTRY}', 'ecr:AWS-Jenkins') {
                         // build image
                         def customImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
 
