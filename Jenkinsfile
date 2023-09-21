@@ -18,6 +18,6 @@ node {
          docker.withRegistry('https://621917999036.dkr.ecr.ap-northeast-2.amazonaws.com', 'ecr:ap-northeast-2:AWS-Jenkins') {
              app.push("${env.BUILD_NUMBER}")
              app.push("latest")
+         }
      }
-  }
 }
