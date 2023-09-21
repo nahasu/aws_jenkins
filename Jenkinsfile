@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // cleanup current user docker credentials
-                    sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
+                   // sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
 
                     // configure registry
                     docker.withRegistry("https://${DOCKER_REGISTRY}", "${AWS_CREDENTIAL_NAME}") {
