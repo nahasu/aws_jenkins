@@ -7,7 +7,7 @@ pipeline {
         TIME_ZONE = 'Asia/Seoul'
         PROFILE = 'local'
         
-        REPOSITORY_CREDENTIAL_ID = 'gitlab-jenkins-key'
+        REPOSITORY_CREDENTIAL_ID = 'nahasu'
         REPOSITORY_URL = 'git@git....../belloga-labeling-service.git'
         TARGET_BRANCH = 'master'
         
