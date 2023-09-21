@@ -8,7 +8,7 @@ pipeline {
         PROFILE = 'local'
         
         REPOSITORY_CREDENTIAL_ID = 'GIT'
-        REPOSITORY_URL = 'git@git....../belloga-labeling-service.git'
+        REPOSITORY_URL = 'https://github.com/nahasu/aws_jenkins '
         TARGET_BRANCH = 'master'
         
         CONTAINER_NAME = 'belloga-labeling-service'
