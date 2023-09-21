@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_REGISTRY = '621917999036.dkr.ecr.ap-northeast-2.amazonaws.com' // ECR URL
+        IMAGE_NAME = 'jenkins_web' // Docker 이미지 이름
+        AWS_CREDENTIAL_NAME = 'AWS-Jenkins' // AWS 자격 증명 이름
+    }
+
     stages {
         stage('Clone repository') {
             steps {
@@ -11,10 +17,17 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build("621917999036.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins_web")
-                    docker.withRegistry('https://621917999036.dkr.ecr.ap-northeast-2.amazonaws.com', 'AWS-Jenkins') {
-                        dockerImage.push("${env.BUILD_NUMBER}")
-                        dockerImage.push("latest")
+                    // cleanup current user docker credentials
+                    sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
+
+                    // configure registry
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", "${AWS_CREDENTIAL_NAME}") {
+                        // build image
+                        def customImage = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
+
+                        // push image
+                        customImage.push()
+                        customImage.push("latest")
                     }
                 }
             }
