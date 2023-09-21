@@ -1,9 +1,9 @@
 app = docker.build("621917999036.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins_web")
 
-# ECR에서 생성한 Repository URI로 변경 및 Jenkins AWS Credential으로 변경
+
 docker.withRegistry('https://621917999036.dkr.ecr.ap-northeast-2.amazonaws.com', 'AWS-Jenkin')
 
-# Full Code
+
   
 node {
      stage('Clone repository') {
