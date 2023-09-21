@@ -19,6 +19,7 @@ pipeline {
         REGION = 'ap-northeast-2'
     }
     stages{
+        stage('GitHub Repository Clone')
         stage('init') {
             steps {
                 echo 'init stage'
